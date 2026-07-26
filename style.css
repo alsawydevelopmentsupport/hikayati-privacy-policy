@@ -1,0 +1,257 @@
+/* Hikayati Interactive — Privacy Policy stylesheet
+   Static, dependency-free. Light + dark palettes via prefers-color-scheme. */
+
+:root{
+  --green-700:#1f6b28;
+  --green-600:#2E7D32;
+  --green-500:#3d9645;
+  --cream:#fff8eb;
+  --paper:#ffffff;
+  --ink:#1a1f1a;
+  --ink-soft:#3f4a3f;
+  --border:#e3ddc9;
+  --card-shadow:0 1px 3px rgba(30,40,20,.08),0 6px 20px rgba(30,40,20,.06);
+  --focus-ring:#0b57d0;
+  --radius:14px;
+  --font-ar:"Segoe UI","Tahoma","Noto Naskh Arabic","Arial",sans-serif;
+  --font-en:"Segoe UI","Roboto","Helvetica Neue","Arial",sans-serif;
+  --maxw:920px;
+}
+
+@media (prefers-color-scheme:dark){
+  :root{
+    --green-700:#8fd39a;
+    --green-600:#6fbf7a;
+    --green-500:#57a862;
+    --cream:#14170f;
+    --paper:#1b2018;
+    --ink:#eef0e8;
+    --ink-soft:#c4cabb;
+    --border:#333a2c;
+    --card-shadow:0 1px 3px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+    --focus-ring:#8ab4ff;
+  }
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  background:var(--cream);
+  color:var(--ink);
+  line-height:1.85;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+[lang="ar"]{font-family:var(--font-ar)}
+[lang="en"]{font-family:var(--font-en)}
+
+.skip-link{
+  position:absolute;
+  top:-999px;
+  left:0;
+  background:var(--green-600);
+  color:#fff;
+  padding:.75rem 1.25rem;
+  z-index:100;
+  border-radius:0 0 8px 0;
+}
+.skip-link:focus{top:0}
+
+a{color:var(--green-700)}
+a:hover{color:var(--green-500)}
+
+:focus-visible{
+  outline:3px solid var(--focus-ring);
+  outline-offset:2px;
+  border-radius:4px;
+}
+
+.topbar{
+  background:var(--paper);
+  border-bottom:1px solid var(--border);
+  padding:.85rem 1.25rem;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.75rem 1.5rem;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.meta-line{
+  font-size:.92rem;
+  color:var(--ink-soft);
+  display:flex;
+  flex-wrap:wrap;
+  gap:.35rem 1rem;
+}
+.meta-line strong{color:var(--ink)}
+
+/* Language switch — pure CSS, no JavaScript.
+   The two radio inputs live as direct children of <body> (visually hidden
+   but keyboard-focusable) so the ~ sibling combinator below can reach both
+   the visible labels in .topbar and the content panes in <main>. */
+.lang-radio{
+  position:absolute;
+  opacity:0;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+.lang-switch{
+  display:inline-flex;
+  border:1px solid var(--border);
+  border-radius:999px;
+  overflow:hidden;
+  background:var(--cream);
+}
+.lang-switch label{
+  padding:.4rem 1.1rem;
+  cursor:pointer;
+  font-size:.92rem;
+  font-weight:600;
+  color:var(--ink-soft);
+  user-select:none;
+  transition:background .15s ease,color .15s ease;
+}
+#lang-ar:checked ~ .topbar label[for="lang-ar"],
+#lang-en:checked ~ .topbar label[for="lang-en"]{
+  background:var(--green-600);
+  color:#fff;
+}
+#lang-ar:focus-visible ~ .topbar label[for="lang-ar"],
+#lang-en:focus-visible ~ .topbar label[for="lang-en"]{
+  outline:3px solid var(--focus-ring);
+  outline-offset:2px;
+}
+
+.wrap{
+  max-width:var(--maxw);
+  margin:0 auto;
+  padding:2rem 1.25rem 4rem;
+}
+
+.hero{
+  background:linear-gradient(155deg,var(--green-600),var(--green-700));
+  color:#fff;
+  border-radius:var(--radius);
+  padding:2rem 1.75rem;
+  margin-bottom:1.75rem;
+  box-shadow:var(--card-shadow);
+}
+.hero h1{margin:0 0 .4rem;font-size:1.85rem}
+.hero p{margin:0;opacity:.92}
+
+.card{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--card-shadow);
+  padding:1.5rem 1.75rem;
+  margin-bottom:1.5rem;
+}
+
+.key-points{
+  background:var(--paper);
+  border:1px solid var(--green-500);
+  border-inline-start:6px solid var(--green-600);
+  border-radius:var(--radius);
+  padding:1.25rem 1.5rem;
+  margin-bottom:1.75rem;
+}
+.key-points h2{margin-top:0}
+.key-points ul{margin:0;padding-inline-start:1.4rem}
+.key-points li{margin:.4rem 0}
+
+.toc{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:1.25rem 1.5rem;
+  margin-bottom:1.75rem;
+}
+.toc h2{margin-top:0;font-size:1.1rem}
+.toc ol{margin:0;padding-inline-start:1.4rem;columns:1}
+.toc li{margin:.3rem 0}
+
+section.policy-section{
+  margin-bottom:1.75rem;
+  scroll-margin-top:5.5rem;
+}
+section.policy-section h2{
+  color:var(--green-700);
+  border-bottom:2px solid var(--border);
+  padding-bottom:.5rem;
+  font-size:1.3rem;
+}
+section.policy-section p,
+section.policy-section li{
+  color:var(--ink-soft);
+}
+section.policy-section ul{padding-inline-start:1.4rem}
+
+.badge{
+  display:inline-block;
+  background:var(--green-600);
+  color:#fff;
+  border-radius:999px;
+  padding:.15rem .7rem;
+  font-size:.78rem;
+  font-weight:700;
+  margin-inline-end:.4rem;
+}
+
+footer{
+  text-align:center;
+  padding:2rem 1.25rem 3rem;
+  color:var(--ink-soft);
+  font-size:.9rem;
+}
+
+/* Language content visibility — CSS-only toggle, defaults to Arabic */
+#content-en{display:none}
+#lang-en:checked ~ main #content-ar{display:none}
+#lang-en:checked ~ main #content-en{display:block}
+
+/* Responsive layout */
+@media (min-width:700px){
+  .toc ol{columns:2;column-gap:2rem}
+}
+@media (min-width:960px){
+  .hero h1{font-size:2.2rem}
+  .wrap{padding-top:2.5rem}
+}
+@media (max-width:480px){
+  .topbar{padding:.75rem 1rem}
+  .card,.key-points,.toc{padding:1.1rem 1.15rem}
+  .hero{padding:1.5rem 1.25rem}
+  .hero h1{font-size:1.5rem}
+}
+
+/* Print */
+@media print{
+  .topbar,.lang-switch,.skip-link{display:none}
+  body{background:#fff;color:#000}
+  .card,.key-points,.toc,.hero{
+    box-shadow:none;
+    border:1px solid #999;
+    break-inside:avoid;
+  }
+  a{color:#000;text-decoration:underline}
+  #content-en{display:block !important}
+}
+
+/* High contrast / reduced motion */
+@media (prefers-contrast:more){
+  :root{--border:#000;--ink-soft:var(--ink)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .lang-switch label{transition:none}
+}
