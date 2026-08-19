@@ -93,10 +93,7 @@ a:hover{color:var(--green-500)}
 }
 .meta-line strong{color:var(--ink)}
 
-/* Language switch — pure CSS, no JavaScript.
-   The two radio inputs live as direct children of <body> (visually hidden
-   but keyboard-focusable) so the ~ sibling combinator below can reach both
-   the visible labels in .topbar and the content panes in <main>. */
+/* Language switch — pure CSS, no JavaScript. */
 .lang-radio{
   position:absolute;
   opacity:0;
@@ -194,7 +191,39 @@ section.policy-section p,
 section.policy-section li{
   color:var(--ink-soft);
 }
-section.policy-section ul{padding-inline-start:1.4rem}
+section.policy-section ul,
+section.policy-section ol{padding-inline-start:1.4rem}
+
+.info-box{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-inline-start:4px solid var(--green-600);
+  border-radius:var(--radius);
+  padding:1rem 1.25rem;
+  margin:1rem 0;
+}
+
+.data-table-wrapper{
+  overflow-x:auto;
+  margin:1rem 0;
+}
+.data-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.92rem;
+  background:var(--paper);
+}
+.data-table th,
+.data-table td{
+  padding:.75rem 1rem;
+  border:1px solid var(--border);
+  text-align:start;
+}
+.data-table th{
+  background:var(--cream);
+  color:var(--green-700);
+  font-weight:700;
+}
 
 .badge{
   display:inline-block;
@@ -232,6 +261,7 @@ footer{
   .card,.key-points,.toc{padding:1.1rem 1.15rem}
   .hero{padding:1.5rem 1.25rem}
   .hero h1{font-size:1.5rem}
+  .data-table th,.data-table td{padding:.5rem .65rem;font-size:.85rem}
 }
 
 /* Print */
